@@ -1,0 +1,5 @@
+pylint
+flake8
+gitpython
+google-genai
+python-dotenv
