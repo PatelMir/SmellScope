@@ -1,5 +1,5 @@
 """
-injector.py - Smell injection module for DriftLens.
+injector.py - Smell injection module for SmellScope.
 
 Copies a package directory to a snapshot path and injects code smells based on
 severity tier. Never modifies the original source.
@@ -82,8 +82,8 @@ def _inject_circular_import(
     prefix = repo_config.get("import_prefix", "")
     module_a = _file_to_module(file_a, prefix)
     module_b = _file_to_module(file_b, prefix)
-    stub_a = f"_driftlens_{Path(file_a).stem}_stub"
-    stub_b = f"_driftlens_{Path(file_b).stem}_stub"
+    stub_a = f"_smellscope_{Path(file_a).stem}_stub"
+    stub_b = f"_smellscope_{Path(file_b).stem}_stub"
 
     path_a = dest_path / file_a
     path_b = dest_path / file_b
@@ -94,7 +94,7 @@ def _inject_circular_import(
         warnings.append({"warning": msg})
         return
 
-    guard = "[DRIFTLENS:circular_import]"
+    guard = "[SMELLSCOPE:circular_import]"
     orig_a = _read_file(path_a)
     orig_b = _read_file(path_b)
 
@@ -103,15 +103,15 @@ def _inject_circular_import(
         return
 
     add_a = (
-        f"\n\n# [DRIFTLENS:circular_import] injected stub\n"
+        f"\n\n# [SMELLSCOPE:circular_import] injected stub\n"
         f"def {stub_a}():\n    pass\n"
-        f"\n\n# [DRIFTLENS:circular_import] injected\n"
+        f"\n\n# [SMELLSCOPE:circular_import] injected\n"
         f"from {module_b} import {stub_b}  # noqa\n"
     )
     add_b = (
-        f"\n\n# [DRIFTLENS:circular_import] injected stub\n"
+        f"\n\n# [SMELLSCOPE:circular_import] injected stub\n"
         f"def {stub_b}():\n    pass\n"
-        f"\n\n# [DRIFTLENS:circular_import] injected\n"
+        f"\n\n# [SMELLSCOPE:circular_import] injected\n"
         f"from {module_a} import {stub_a}  # noqa\n"
     )
 
@@ -142,7 +142,7 @@ def _inject_layer_violation(
     lower_file, upper_file = targets
     prefix = repo_config.get("import_prefix", "")
     upper_module = _file_to_module(upper_file, prefix)
-    stub_name = "_driftlens_orchestrator_stub"
+    stub_name = "_smellscope_orchestrator_stub"
 
     lower_path = dest_path / lower_file
     upper_path = dest_path / upper_file
@@ -153,7 +153,7 @@ def _inject_layer_violation(
         warnings.append({"warning": msg})
         return
 
-    guard = "[DRIFTLENS:layer_violation]"
+    guard = "[SMELLSCOPE:layer_violation]"
     upper_orig = _read_file(upper_path)
     lower_orig = _read_file(lower_path)
 
@@ -162,7 +162,7 @@ def _inject_layer_violation(
         return
 
     add_upper = (
-        f"\n\n# [DRIFTLENS:layer_violation] injected stub\n"
+        f"\n\n# [SMELLSCOPE:layer_violation] injected stub\n"
         f"def {stub_name}():\n    pass\n"
     )
     ok_upper = _safe_append(upper_path, upper_orig, add_upper, warnings)
@@ -170,9 +170,9 @@ def _inject_layer_violation(
         return
 
     add_lower = (
-        f"\n\n# [DRIFTLENS:layer_violation] injected - imports from higher layer"
+        f"\n\n# [SMELLSCOPE:layer_violation] injected - imports from higher layer"
         f" (inverted dependency)\n"
-        f"from {upper_module} import {stub_name} as _driftlens_orchestrator_ref  # noqa\n"
+        f"from {upper_module} import {stub_name} as _smellscope_orchestrator_ref  # noqa\n"
     )
     ok_lower = _safe_append(lower_path, lower_orig, add_lower, warnings)
 
@@ -206,15 +206,15 @@ def _inject_god_module(
         warnings.append({"warning": msg})
         return
 
-    guard = "[DRIFTLENS:god_module]"
+    guard = "[SMELLSCOPE:god_module]"
     orig = _read_file(path)
     if guard in orig:
         warnings.append({"warning": "god_module guard already present - skipping."})
         return
 
     addition = (
-        "\n\n# [DRIFTLENS:god_module] injected - class with too many instance attributes\n"
-        "class _DriftLensGodClass:  # noqa\n"
+        "\n\n# [SMELLSCOPE:god_module] injected - class with too many instance attributes\n"
+        "class _SmellScopeGodClass:  # noqa\n"
         "    def __init__(self):\n"
         "        self.attr_a = 1\n"
         "        self.attr_b = 2\n"
@@ -224,8 +224,8 @@ def _inject_god_module(
         "        self.attr_f = 6\n"
         "        self.attr_g = 7\n"
         "        self.attr_h = 8\n"
-        "\n\n# [DRIFTLENS:god_module] injected - function with too many local variables\n"
-        "def _driftlens_god_function():  # noqa\n"
+        "\n\n# [SMELLSCOPE:god_module] injected - function with too many local variables\n"
+        "def _smellscope_god_function():  # noqa\n"
         "    v1 = v2 = v3 = v4 = 0\n"
         "    v5 = v6 = v7 = v8 = 0\n"
         "    v9 = v10 = v11 = v12 = 0\n"
@@ -240,7 +240,7 @@ def _inject_god_module(
             "smell_type": "god_module",
             "files_modified": [target],
             "description": (
-                f"Injected _DriftLensGodClass (8 attrs) and _driftlens_god_function"
+                f"Injected _SmellScopeGodClass (8 attrs) and _smellscope_god_function"
                 f" (16 locals) into {target}."
             ),
         })
@@ -264,15 +264,15 @@ def _inject_long_method(
         warnings.append({"warning": msg})
         return
 
-    guard = "[DRIFTLENS:long_method]"
+    guard = "[SMELLSCOPE:long_method]"
     orig = _read_file(path)
     if guard in orig:
         warnings.append({"warning": "long_method guard already present - skipping."})
         return
 
     body_lines = [
-        "\n\n# [DRIFTLENS:long_method] injected - intentionally long function\n",
-        "def _driftlens_long_function():  # noqa\n",
+        "\n\n# [SMELLSCOPE:long_method] injected - intentionally long function\n",
+        "def _smellscope_long_function():  # noqa\n",
         "    result = 0\n",
     ]
     for i in range(1, 53):
@@ -286,7 +286,7 @@ def _inject_long_method(
         injections.append({
             "smell_type": "long_method",
             "files_modified": [target],
-            "description": f"Injected _driftlens_long_function (~55 statements) into {target}.",
+            "description": f"Injected _smellscope_long_function (~55 statements) into {target}.",
         })
 
 
@@ -308,15 +308,15 @@ def _inject_poor_naming(
         warnings.append({"warning": msg})
         return
 
-    guard = "[DRIFTLENS:poor_naming]"
+    guard = "[SMELLSCOPE:poor_naming]"
     orig = _read_file(path)
     if guard in orig:
         warnings.append({"warning": "poor_naming guard already present - skipping."})
         return
 
     addition = (
-        "\n\n# [DRIFTLENS:poor_naming] injected - non-descriptive single-char names\n"
-        "def _driftlens_poorly_named(a, b, c, d):  # noqa\n"
+        "\n\n# [SMELLSCOPE:poor_naming] injected - non-descriptive single-char names\n"
+        "def _smellscope_poorly_named(a, b, c, d):  # noqa\n"
         "    x = a + b\n"
         "    y = x * c\n"
         "    z = y - d\n"
@@ -330,7 +330,7 @@ def _inject_poor_naming(
             "smell_type": "poor_naming",
             "files_modified": [target],
             "description": (
-                f"Injected _driftlens_poorly_named with single-char params/vars into {target}."
+                f"Injected _smellscope_poorly_named with single-char params/vars into {target}."
             ),
         })
 

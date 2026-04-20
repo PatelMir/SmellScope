@@ -1,5 +1,5 @@
 """
-oracle_runner.py - Pylint and Flake8 runner for DriftLens.
+oracle_runner.py - Pylint and Flake8 runner for SmellScope.
 
 Runs static analysis on a snapshot directory, classifies each finding against
 the smell maps in config.py, and writes oracle_results.json.
@@ -79,7 +79,7 @@ def _classify_pylint(
     """
     Split Pylint findings into (smell_relevant, other).
 
-    E0401 and W0611 in files marked [DRIFTLENS:circular_import] are classified as
+    E0401 and W0611 in files marked [SMELLSCOPE:circular_import] are classified as
     circular_import. E0401 for known platform-only modules are dropped entirely.
     """
     smell_relevant = []
@@ -106,7 +106,7 @@ def _classify_pylint(
             "smell_type": None,
         }
 
-        if code in ("E0401", "W0611") and _file_contains_marker(file_abs, "[DRIFTLENS:circular_import]"):
+        if code in ("E0401", "W0611") and _file_contains_marker(file_abs, "[SMELLSCOPE:circular_import]"):
             entry["smell_type"] = "circular_import"
             smell_relevant.append(entry)
             continue

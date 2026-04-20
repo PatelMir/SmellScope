@@ -1,5 +1,5 @@
 """
-llm_interface.py - AST-based code summarizer and Gemini LLM interface for DriftLens.
+llm_interface.py - AST-based code summarizer and Gemini LLM interface for SmellScope.
 
 Generates a structural summary of a snapshot directory, sends it to Gemini,
 and parses the detected smells from the JSON response.

@@ -1,6 +1,6 @@
-# DriftLens
+# SmellScope
 
-DriftLens is a Python CLI research tool that evaluates whether a large language model can detect architectural smells in real open-source Python codebases as accurately as traditional static analysis tools. It injects smells at four severity levels, runs Pylint and Flake8 as ground-truth oracles, queries Gemini through its API, and outputs a structured comparison report with precision, recall, and F1 scores per tier.
+SmellScope is a Python CLI research tool that evaluates whether a large language model can detect architectural smells in real open-source Python codebases as accurately as traditional static analysis tools. It injects smells at four severity levels, runs Pylint and Flake8 as ground-truth oracles, queries Gemini through its API, and outputs a structured comparison report with precision, recall, and F1 scores per tier.
 
 This project was built for CS 6356 (Software Maintenance, Evolution & Re-Engineering) at UT Dallas.
 
@@ -57,8 +57,8 @@ Two granularity levels are used to test whether AST-level structural context is 
 ## Installation
 
 ```bash
-git clone https://github.com/PatelMir/DriftLens.git
-cd driftlens
+git clone https://github.com/PatelMir/SmellScope.git
+cd SmellScope
 pip install -r requirements.txt
 cp .env.example .env
 # Open .env and set GEMINI_API_KEY=your_key_here
@@ -99,6 +99,7 @@ python main.py --gemini-key YOUR_KEY_HERE
 | `--skip-inject` | Skip injector, use existing snapshots |
 | `--skip-oracle` | Skip Pylint and Flake8 runs |
 | `--skip-llm` | Skip Gemini API calls |
+| `--skip-judge` | Skip LLM judge (Mode 3) calls |
 | `--report-only` | Regenerate report from existing results only |
 
 ---
@@ -108,15 +109,15 @@ python main.py --gemini-key YOUR_KEY_HERE
 After a full run, the following files are written:
 
 ```
-driftlens/
+SmellScope/
 ├── snapshots/
 │   └── <repo>/<tier>/
 │       ├── injection_log.json    # What was injected and where
 │       ├── oracle_results.json   # Pylint + Flake8 findings, classified by smell type
 │       └── llm_results.json      # Gemini detections and parse status
 └── output/
-    ├── driftlens_report.json     # Full results with per-tier precision, recall, F1
-    ├── driftlens_report.md       # Human-readable Markdown report
+    ├── smellscope_report.json    # Full results with per-tier precision, recall, F1
+    ├── smellscope_report.md      # Human-readable Markdown report
     └── audit_report.txt          # Six-check methodological audit (if run)
 ```
 
@@ -124,17 +125,19 @@ driftlens/
 
 ## Pipeline Overview
 
-The pipeline runs in five stages in order.
+The pipeline runs in six stages in order.
 
 **Stage 1 (Clone):** each repo is cloned via `gitpython` into `repos/<repo_name>/`. Skipped if the directory already exists.
 
-**Stage 2 (Inject):** for each repo and tier combination, the package directory is copied fresh to `snapshots/<repo>/<tier>/` using `shutil.copytree`. Smell code is appended to target files, guarded with `[DRIFTLENS:<smell_type>]` comments to prevent double-injection. Each modified file is validated with `ast.parse()` and reverted if a syntax error occurs.
+**Stage 2 (Inject):** for each repo and tier combination, the package directory is copied fresh to `snapshots/<repo>/<tier>/` using `shutil.copytree`. Smell code is appended to target files, guarded with `[SMELLSCOPE:<smell_type>]` comments to prevent double-injection. Each modified file is validated with `ast.parse()` and reverted if a syntax error occurs.
 
 **Stage 3 (Oracle):** Pylint and Flake8 are run on each snapshot. Raw findings are mapped to smell types using two classification tables and written to `oracle_results.json`. E0401 findings for Windows-only modules are suppressed on non-Windows systems.
 
-**Stage 4 (LLM Interface):** each snapshot is summarized via Python's `ast` module (imports, class names, function names, line counts, local variable counts per function). The summary is capped at 12,000 characters and embedded into a structured prompt asking Gemini to identify smells and return JSON. Results are skip-cached so a failed re-run only consumes API quota for missing tiers.
+**Stage 4 (LLM Judge):** for each oracle finding, Gemini is asked to classify the finding as genuine or a false positive. One call per distinct smell type per snapshot. Results are skip-cached to `judge_results.json`. This is Mode 3.
 
-**Stage 5 (Report):** all result files are read, set-based precision/recall/F1 is computed per tier, and both `driftlens_report.json` and `driftlens_report.md` are written. Metrics use one positive per distinct smell type per snapshot, not per individual finding.
+**Stage 5 (LLM Interface):** each snapshot is summarized via Python's `ast` module (imports, class names, function names, line counts, local variable counts per function). The summary is capped at 12,000 characters and embedded into a structured prompt asking Gemini to identify smells and return JSON. Results are skip-cached so a failed re-run only consumes API quota for missing tiers.
+
+**Stage 6 (Report):** all result files are read, set-based precision/recall/F1 is computed per tier for Modes 1, 2, and 3, and both `smellscope_report.json` and `smellscope_report.md` are written. Metrics use one positive per distinct smell type per snapshot, not per individual finding.
 
 ---
 

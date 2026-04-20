@@ -1,9 +1,9 @@
 """
-reporter.py - Metrics computation and report generation for DriftLens.
+reporter.py - Metrics computation and report generation for SmellScope.
 
 Reads injection_log.json, oracle_results.json, and llm_results.json for all
-repos/tiers, computes precision/recall/F1, and writes driftlens_report.json
-and driftlens_report.md to the output/ directory.
+repos/tiers, computes precision/recall/F1, and writes smellscope_report.json
+and smellscope_report.md to the output/ directory.
 """
 
 import json
@@ -24,12 +24,13 @@ def _load_json(path: Path) -> dict | None:
 
 
 def _load_tier_data(snapshots_dir: Path, repo_name: str, severity: str) -> dict:
-    """Load all three result files for one repo/tier combination."""
+    """Load all result files for one repo/tier combination."""
     tier_dir = snapshots_dir / repo_name / severity
     return {
         "injection_log": _load_json(tier_dir / "injection_log.json"),
         "oracle": _load_json(tier_dir / "oracle_results.json"),
         "llm": _load_json(tier_dir / "llm_results.json"),
+        "judge": _load_json(tier_dir / "judge_results.json"),
     }
 
 
@@ -146,6 +147,34 @@ def _build_llm_tier(llm: dict | None, injection_log: dict | None) -> dict:
     }
 
 
+def _build_judge_tier(judge: dict | None, injection_log: dict | None) -> dict:
+    """Build LLM judge (Mode 3) metrics for one repo/tier."""
+    injected = _injected_smell_types(injection_log)
+
+    if judge is None:
+        return {
+            "total_validated": 0,
+            "by_smell": {s: 0 for s in SMELL_TYPES},
+            "injected_types": injected,
+            "precision": None,
+            "recall": None,
+            "f1": None,
+            "notes": "judge_results.json missing",
+        }
+
+    validated = judge.get("validated", [])
+    by_smell = _count_by_smell(validated)
+    detected_types = list({e["smell_type"] for e in validated if e.get("smell_type")})
+    metrics = _compute_metrics(detected_types, injected)
+
+    return {
+        "total_validated": len(validated),
+        "by_smell": by_smell,
+        "injected_types": injected,
+        **metrics,
+    }
+
+
 _COARSE_SMELLS = {"circular_import", "god_module", "layer_boundary_violation"}
 _FINE_SMELLS = {"long_method", "poor_naming"}
 
@@ -176,6 +205,13 @@ def _build_rq_summaries(repo_results: list) -> dict:
     llm_coarse = avg_recall("llm", non_none)
     gap = round(oracle_coarse - llm_coarse, 1) if (oracle_coarse and llm_coarse) else None
 
+    def avg_precision(tool_key: str, tiers: list) -> float | None:
+        vals = [t[tool_key]["precision"] for t in tiers if t[tool_key].get("precision") is not None]
+        return round(sum(vals) / len(vals) * 100, 1) if vals else None
+
+    judge_coarse_recall = avg_recall("judge", non_none)
+    judge_coarse_precision = avg_precision("judge", non_none)
+
     by_tier = {
         sv: None if sv == "none" else avg_recall("llm", tiers)
         for sv, tiers in all_tiers_by_severity.items()
@@ -190,6 +226,8 @@ def _build_rq_summaries(repo_results: list) -> dict:
             "oracle_coarse_recall": oracle_coarse,
             "llm_coarse_recall": llm_coarse,
             "gap": gap,
+            "judge_coarse_recall": judge_coarse_recall,
+            "judge_coarse_precision": judge_coarse_precision,
         },
         "RQ2": {
             "description": "LLM fine-grained vs coarse-grained detection",
@@ -213,7 +251,7 @@ def _pct(val: float | None) -> str:
 
 
 def _build_markdown(report: dict) -> str:
-    """Render the driftlens_report.md from the JSON report dict."""
+    """Render the smellscope_report.md from the JSON report dict."""
     ts = report["generated_at"]
     rqs = report["rq_summary"]
     r1 = rqs["RQ1"]
@@ -223,12 +261,14 @@ def _build_markdown(report: dict) -> str:
     oracle_r = _pct(r1["oracle_coarse_recall"])
     llm_r = _pct(r1["llm_coarse_recall"])
     gap_str = f"{r1['gap']}%" if r1["gap"] is not None else "N/A"
+    judge_r = _pct(r1.get("judge_coarse_recall"))
+    judge_p = _pct(r1.get("judge_coarse_precision"))
 
     lines = [
-        "# DriftLens: Preliminary Results Report",
+        "# SmellScope: Preliminary Results Report",
         "",
         "## Overview",
-        "DriftLens evaluates LLM awareness of architectural smells in Python codebases by "
+        "SmellScope evaluates LLM awareness of architectural smells in Python codebases by "
         "injecting smells at four severity levels and comparing detection rates between "
         "Gemini 3 Flash Preview and static analysis oracles (Pylint + Flake8).",
         "",
@@ -242,12 +282,13 @@ def _build_markdown(report: dict) -> str:
         "",
         f"Across all repos and non-baseline tiers, the static analysis oracle achieved "
         f"an average coarse-grained smell recall of {oracle_r}, while Gemini 3 Flash Preview "
-        f"achieved {llm_r} (gap: {gap_str}). The oracle benefits from precise pattern "
-        f"matching on known Pylint/Flake8 codes, whereas the LLM infers smells from "
-        f"structural summaries alone.",
+        f"achieved {llm_r} (gap: {gap_str}). Mode 3 (LLM judge) achieved a recall of "
+        f"{judge_r} and a precision of {judge_p} by filtering oracle findings. "
+        f"The oracle benefits from precise pattern matching on known Pylint/Flake8 codes, "
+        f"whereas the LLM infers smells from structural summaries alone.",
         "",
-        "| Repo | Tier | Oracle Recall | LLM Recall |",
-        "|---|---|---|---|",
+        "| Repo | Tier | Oracle Recall | LLM Recall | Judge Precision | Judge Recall |",
+        "|---|---|---|---|---|---|",
     ]
 
     for repo in report["repos"]:
@@ -255,7 +296,9 @@ def _build_markdown(report: dict) -> str:
             lines.append(
                 f"| {repo['name']} | {tier['severity']} "
                 f"| {_pct(tier['oracle'].get('recall'))} "
-                f"| {_pct(tier['llm'].get('recall'))} |"
+                f"| {_pct(tier['llm'].get('recall'))} "
+                f"| {_pct(tier['judge'].get('precision'))} "
+                f"| {_pct(tier['judge'].get('recall'))} |"
             )
 
     by_tier = r3["by_tier"]
@@ -328,9 +371,15 @@ def generate_report(snapshots_dir: Path, output_dir: Path, repo_names: list) -> 
             data = _load_tier_data(snapshots_dir, repo_name, severity)
             oracle_tier = _build_oracle_tier(data["oracle"], data["injection_log"])
             llm_tier = _build_llm_tier(data["llm"], data["injection_log"])
+            judge_tier = _build_judge_tier(data["judge"], data["injection_log"])
             if llm_tier.get("parse_error"):
                 parse_errors += 1
-            tiers_out.append({"severity": severity, "oracle": oracle_tier, "llm": llm_tier})
+            tiers_out.append({
+                "severity": severity,
+                "oracle": oracle_tier,
+                "llm": llm_tier,
+                "judge": judge_tier,
+            })
         repo_results.append({"name": repo_name, "tiers": tiers_out})
 
     report = {
@@ -339,8 +388,8 @@ def generate_report(snapshots_dir: Path, output_dir: Path, repo_names: list) -> 
         "rq_summary": _build_rq_summaries(repo_results),
     }
 
-    json_path = output_dir / "driftlens_report.json"
-    md_path = output_dir / "driftlens_report.md"
+    json_path = output_dir / "smellscope_report.json"
+    md_path = output_dir / "smellscope_report.md"
 
     try:
         json_path.write_text(json.dumps(report, indent=2), encoding="utf-8")

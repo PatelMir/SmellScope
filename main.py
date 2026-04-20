@@ -1,5 +1,5 @@
 """
-main.py - DriftLens CLI.
+main.py - SmellScope CLI.
 
 Evaluates LLM awareness of architectural smells by injecting smells into Python
 repos at four severity tiers and comparing Gemini vs static analysis detection.
@@ -23,6 +23,7 @@ import git
 from config import REPO_CONFIGS, SEVERITY_TIERS
 from injector import inject_snapshot
 from llm_interface import run_llm
+from llm_judge import run_judge
 from oracle_runner import install_repo_deps, run_oracle
 from reporter import generate_report
 
@@ -31,11 +32,13 @@ REPOS_DIR = BASE / "repos"
 SNAPSHOTS_DIR = BASE / "snapshots"
 OUTPUT_DIR = BASE / "output"
 
+_JUDGE_MODEL = "gemini-2.5-flash"
+
 
 def _parse_args() -> argparse.Namespace:
     """Parse and return CLI arguments."""
     parser = argparse.ArgumentParser(
-        description="DriftLens: LLM architectural smell detection evaluation."
+        description="SmellScope: LLM architectural smell detection evaluation."
     )
     parser.add_argument(
         "--repos",
@@ -61,6 +64,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-clone", action="store_true", help="Skip git clone step.")
     parser.add_argument("--skip-inject", action="store_true", help="Skip injection step.")
     parser.add_argument("--skip-oracle", action="store_true", help="Skip oracle runner step.")
+    parser.add_argument("--skip-judge", action="store_true", help="Skip LLM judge step.")
     parser.add_argument("--skip-llm", action="store_true", help="Skip LLM interface step.")
     parser.add_argument(
         "--report-only",
@@ -83,16 +87,17 @@ def _clone_repo(repo_cfg: dict) -> Path:
 
 
 def _run_pipeline(args: argparse.Namespace) -> None:
-    """Execute the full DriftLens pipeline based on CLI flags."""
+    """Execute the full SmellScope pipeline based on CLI flags."""
     repos = args.repos
     tiers = args.severity
     api_key = args.gemini_key
     skip_llm = args.skip_llm or args.report_only
+    skip_judge = args.skip_judge or args.report_only
     skip_clone = args.skip_clone or args.report_only
     skip_inject = args.skip_inject or args.report_only
     skip_oracle = args.skip_oracle or args.report_only
 
-    if not skip_llm and not api_key:
+    if (not skip_llm or not skip_judge) and not api_key:
         print(
             "ERROR: GEMINI_API_KEY is not set and --skip-llm was not passed. "
             "Export GEMINI_API_KEY or pass --gemini-key.",
@@ -104,15 +109,15 @@ def _run_pipeline(args: argparse.Namespace) -> None:
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
 
     if not skip_clone:
-        print("[1/5] Cloning repos...")
+        print("[1/6] Cloning repos...")
         for repo_name in repos:
             _clone_repo(REPO_CONFIGS[repo_name])
     else:
-        print("[1/5] Cloning repos... (skipped)")
+        print("[1/6] Cloning repos... (skipped)")
 
     if not skip_inject:
         for repo_name in repos:
-            print(f"[2/5] Running injector ({repo_name} x {len(tiers)} tiers)...")
+            print(f"[2/6] Running injector ({repo_name} x {len(tiers)} tiers)...")
             repo_cfg = REPO_CONFIGS[repo_name]
             package_path = REPOS_DIR / repo_name / repo_cfg["package_subpath"]
             for tier in tiers:
@@ -121,12 +126,12 @@ def _run_pipeline(args: argparse.Namespace) -> None:
                 except Exception as exc:
                     print(f"  ERROR injecting {repo_name}/{tier}: {exc} - continuing.", file=sys.stderr)
     else:
-        print("[2/5] Running injector... (skipped)")
+        print("[2/6] Running injector... (skipped)")
 
     deps_installed = set()
     if not skip_oracle:
         for repo_name in repos:
-            print(f"[3/5] Running oracle ({repo_name} x {len(tiers)} tiers)...")
+            print(f"[3/6] Running oracle ({repo_name} x {len(tiers)} tiers)...")
             repo_cfg = REPO_CONFIGS[repo_name]
             if repo_name not in deps_installed:
                 install_repo_deps(repo_cfg["install_deps"])
@@ -141,11 +146,30 @@ def _run_pipeline(args: argparse.Namespace) -> None:
                 except Exception as exc:
                     print(f"  ERROR in oracle {repo_name}/{tier}: {exc} - continuing.", file=sys.stderr)
     else:
-        print("[3/5] Running oracle... (skipped)")
+        print("[3/6] Running oracle... (skipped)")
+
+    if not skip_judge:
+        for repo_name in repos:
+            print(f"[4/6] Running LLM judge ({repo_name} x {len(tiers)} tiers)...")
+            for tier in tiers:
+                snap_path = SNAPSHOTS_DIR / repo_name / tier
+                if not snap_path.exists():
+                    print(f"  SKIP: snapshot missing for {repo_name}/{tier}", file=sys.stderr)
+                    continue
+                judge_path = snap_path / "judge_results.json"
+                if judge_path.exists():
+                    print(f"  Skipping {repo_name}/{tier} -- judge_results.json exists.")
+                    continue
+                try:
+                    run_judge(snap_path, _JUDGE_MODEL, api_key)
+                except Exception as exc:
+                    print(f"  ERROR in judge {repo_name}/{tier}: {exc} - continuing.", file=sys.stderr)
+    else:
+        print("[4/6] Running LLM judge... (skipped)")
 
     if not skip_llm:
         for repo_name in repos:
-            print(f"[4/5] Running LLM interface ({repo_name} x {len(tiers)} tiers)...")
+            print(f"[5/6] Running LLM interface ({repo_name} x {len(tiers)} tiers)...")
             for tier in tiers:
                 snap_path = SNAPSHOTS_DIR / repo_name / tier
                 if not snap_path.exists():
@@ -156,20 +180,20 @@ def _run_pipeline(args: argparse.Namespace) -> None:
                 except Exception as exc:
                     print(f"  ERROR in LLM {repo_name}/{tier}: {exc} - continuing.", file=sys.stderr)
     else:
-        print("[4/5] Running LLM interface... (skipped)")
+        print("[5/6] Running LLM interface... (skipped)")
 
-    print("[5/5] Generating report...")
+    print("[6/6] Generating report...")
     generate_report(SNAPSHOTS_DIR, OUTPUT_DIR, list(REPO_CONFIGS.keys()))
 
     print(
         f"\nDone. Output written to "
-        f"{OUTPUT_DIR / 'driftlens_report.json'} and "
-        f"{OUTPUT_DIR / 'driftlens_report.md'}"
+        f"{OUTPUT_DIR / 'smellscope_report.json'} and "
+        f"{OUTPUT_DIR / 'smellscope_report.md'}"
     )
 
 
 def main() -> None:
-    """Entry point for the DriftLens CLI."""
+    """Entry point for the SmellScope CLI."""
     args = _parse_args()
     _run_pipeline(args)
 

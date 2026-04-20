@@ -1,5 +1,5 @@
 """
-config.py - Repository configurations and smell classification maps for DriftLens.
+config.py - Repository configurations and smell classification maps for SmellScope.
 """
 
 REPO_CONFIGS = {
