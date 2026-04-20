@@ -6,3 +6,10 @@ __pycache__/
 repos/
 snapshots/
 .DS_Store
+candidates.json
+candidates_expanded.json
+repo_selection_log.json
+repo_selection_log_expanded.json
+output/
+smellscope_report.json
+smellscope_report.md
