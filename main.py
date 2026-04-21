@@ -32,7 +32,7 @@ REPOS_DIR = BASE / "repos"
 SNAPSHOTS_DIR = BASE / "snapshots"
 OUTPUT_DIR = BASE / "output"
 
-_JUDGE_MODEL = "gemini-2.5-flash"
+_DEFAULT_MODEL = "gemini-2.5-flash-lite"
 
 
 def _parse_args() -> argparse.Namespace:
@@ -60,6 +60,11 @@ def _parse_args() -> argparse.Namespace:
         "--gemini-key",
         default=os.environ.get("GEMINI_API_KEY", ""),
         help="Gemini API key (falls back to GEMINI_API_KEY env var).",
+    )
+    parser.add_argument(
+        "--model",
+        default=_DEFAULT_MODEL,
+        help=f"Gemini model name for both LLM interface and judge (default: {_DEFAULT_MODEL}).",
     )
     parser.add_argument("--skip-clone", action="store_true", help="Skip git clone step.")
     parser.add_argument("--skip-inject", action="store_true", help="Skip injection step.")
@@ -91,6 +96,7 @@ def _run_pipeline(args: argparse.Namespace) -> None:
     repos = args.repos
     tiers = args.severity
     api_key = args.gemini_key
+    model = args.model
     skip_llm = args.skip_llm or args.report_only
     skip_judge = args.skip_judge or args.report_only
     skip_clone = args.skip_clone or args.report_only
@@ -161,7 +167,7 @@ def _run_pipeline(args: argparse.Namespace) -> None:
                     print(f"  Skipping {repo_name}/{tier} -- judge_results.json exists.")
                     continue
                 try:
-                    run_judge(snap_path, _JUDGE_MODEL, api_key)
+                    run_judge(snap_path, model, api_key)
                 except Exception as exc:
                     print(f"  ERROR in judge {repo_name}/{tier}: {exc} - continuing.", file=sys.stderr)
     else:
@@ -176,7 +182,7 @@ def _run_pipeline(args: argparse.Namespace) -> None:
                     print(f"  SKIP: snapshot missing for {repo_name}/{tier}", file=sys.stderr)
                     continue
                 try:
-                    run_llm(snap_path, repo_name, tier, api_key)
+                    run_llm(snap_path, repo_name, tier, api_key, model)
                 except Exception as exc:
                     print(f"  ERROR in LLM {repo_name}/{tier}: {exc} - continuing.", file=sys.stderr)
     else:

@@ -11,7 +11,7 @@ import sys
 import time
 from pathlib import Path
 
-_MODEL_NAME = "gemini-3.1-flash-lite-preview"
+_MODEL_NAME = "gemini-2.5-flash-lite"
 
 
 def _count_locals(func_node: ast.FunctionDef) -> int:
@@ -168,7 +168,7 @@ def _parse_llm_response(raw_text: str) -> tuple:
         return None, True
 
 
-def call_gemini(prompt: str, api_key: str) -> tuple:
+def call_gemini(prompt: str, api_key: str, model: str = _MODEL_NAME) -> tuple:
     """
     Send one prompt to Gemini and return (parsed_result, raw_text).
 
@@ -183,7 +183,7 @@ def call_gemini(prompt: str, api_key: str) -> tuple:
     client = genai.Client(api_key=api_key)
 
     try:
-        response = client.models.generate_content(model=_MODEL_NAME, contents=prompt)
+        response = client.models.generate_content(model=model, contents=prompt)
         raw_text = response.text
     except Exception as exc:
         print(f"[llm] API call failed: {exc}", file=sys.stderr)
@@ -200,7 +200,7 @@ def call_gemini(prompt: str, api_key: str) -> tuple:
     }, raw_text
 
 
-def run_llm(snapshot_path: Path, repo_name: str, severity: str, api_key: str) -> dict:
+def run_llm(snapshot_path: Path, repo_name: str, severity: str, api_key: str, model: str = _MODEL_NAME) -> dict:
     """Build a codebase summary, query Gemini, parse results, and write llm_results.json."""
     out_path = snapshot_path / "llm_results.json"
     if out_path.exists():
@@ -219,14 +219,14 @@ def run_llm(snapshot_path: Path, repo_name: str, severity: str, api_key: str) ->
 
     time.sleep(5)
 
-    parsed, _ = call_gemini(prompt, api_key)
+    parsed, _ = call_gemini(prompt, api_key, model)
     parse_error = parsed.get("parse_error", False)
     detected_smells = parsed.get("detected_smells", [])
 
     results = {
         "repo": repo_name,
         "severity": severity,
-        "model": _MODEL_NAME,
+        "model": model,
         "detected_smells": detected_smells,
         "parse_error": parse_error,
         "summary_char_count": len(summary),
