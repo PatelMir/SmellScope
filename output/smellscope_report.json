@@ -1,16 +1,2227 @@
 {
-  "generated_at": "2026-04-20T11:29:37Z",
+  "generated_at": "2026-04-21T05:07:26Z",
   "repos": [
     {
-      "name": "cookiecutter",
+      "name": "HRM",
       "tiers": [
         {
           "severity": "none",
           "oracle": {
-            "total_smell_relevant": 10,
+            "total_smell_relevant": 36,
+            "by_smell": {
+              "circular_import": 17,
+              "god_module": 13,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
             "by_smell": {
               "circular_import": 0,
-              "god_module": 10,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 36,
+            "by_smell": {
+              "circular_import": 17,
+              "god_module": 13,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 36,
+            "by_smell": {
+              "circular_import": 17,
+              "god_module": 13,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 36,
+            "by_smell": {
+              "circular_import": 17,
+              "god_module": 13,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "computer-use-preview",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 14,
+            "by_smell": {
+              "circular_import": 4,
+              "god_module": 6,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 14,
+            "by_smell": {
+              "circular_import": 4,
+              "god_module": 6,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 14,
+            "by_smell": {
+              "circular_import": 4,
+              "god_module": 6,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 14,
+            "by_smell": {
+              "circular_import": 4,
+              "god_module": 6,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "simple_GRPO",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 166,
+            "by_smell": {
+              "circular_import": 46,
+              "god_module": 16,
+              "layer_boundary_violation": 104,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 3,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 166,
+            "by_smell": {
+              "circular_import": 46,
+              "god_module": 16,
+              "layer_boundary_violation": 104,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 166,
+            "by_smell": {
+              "circular_import": 46,
+              "god_module": 16,
+              "layer_boundary_violation": 104,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 166,
+            "by_smell": {
+              "circular_import": 46,
+              "god_module": 16,
+              "layer_boundary_violation": 104,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wechat-decrypt",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 120,
+            "by_smell": {
+              "circular_import": 16,
+              "god_module": 76,
+              "layer_boundary_violation": 28,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 120,
+            "by_smell": {
+              "circular_import": 16,
+              "god_module": 76,
+              "layer_boundary_violation": 28,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 120,
+            "by_smell": {
+              "circular_import": 16,
+              "god_module": 76,
+              "layer_boundary_violation": 28,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 120,
+            "by_smell": {
+              "circular_import": 16,
+              "god_module": 76,
+              "layer_boundary_violation": 28,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "android-action-kernel",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 5,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 1,
+              "layer_boundary_violation": 2,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 3,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 5,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 1,
+              "layer_boundary_violation": 2,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 3,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 5,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 1,
+              "layer_boundary_violation": 2,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 5,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 1,
+              "layer_boundary_violation": 2,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "make-it-heavy",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 12,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 2,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 12,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 2,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 12,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 2,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 12,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 2,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "StockTradebyZ",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 41,
+            "by_smell": {
+              "circular_import": 19,
+              "god_module": 16,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 41,
+            "by_smell": {
+              "circular_import": 19,
+              "god_module": 16,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 41,
+            "by_smell": {
+              "circular_import": 19,
+              "god_module": 16,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 41,
+            "by_smell": {
+              "circular_import": 19,
+              "god_module": 16,
+              "layer_boundary_violation": 6,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "notebooklm-skill",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 40,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 14,
+              "layer_boundary_violation": 14,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 40,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 14,
+              "layer_boundary_violation": 14,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 40,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 14,
+              "layer_boundary_violation": 14,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 40,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 14,
+              "layer_boundary_violation": 14,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "smart-turn",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 48,
+            "by_smell": {
+              "circular_import": 24,
+              "god_module": 17,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 48,
+            "by_smell": {
+              "circular_import": 24,
+              "god_module": 17,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 48,
+            "by_smell": {
+              "circular_import": 24,
+              "god_module": 17,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 48,
+            "by_smell": {
+              "circular_import": 24,
+              "god_module": 17,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "csm",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 19,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 3,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 19,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 3,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 1,
+              "long_method": 3,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 19,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 3,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 1,
+              "long_method": 3,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 19,
+            "by_smell": {
+              "circular_import": 12,
+              "god_module": 3,
+              "layer_boundary_violation": 4,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 0,
+              "layer_boundary_violation": 1,
+              "long_method": 3,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "GRPO-Zero",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 15,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 12,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 2,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 15,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 12,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 15,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 12,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 3,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 15,
+            "by_smell": {
+              "circular_import": 3,
+              "god_module": 12,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 2,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SNI-Spoofing",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 4,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 2,
               "layer_boundary_violation": 0,
               "long_method": 0,
               "poor_naming": 0
@@ -38,6 +2249,609 @@
             "notes": "baseline tier, no injections"
           },
           "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 4,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 2,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 4,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 2,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 4,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 2,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 2,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "qiaomu-anything-to-notebooklm",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 69,
+            "by_smell": {
+              "circular_import": 11,
+              "god_module": 16,
+              "layer_boundary_violation": 42,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 2,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 69,
+            "by_smell": {
+              "circular_import": 11,
+              "god_module": 16,
+              "layer_boundary_violation": 42,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 69,
+            "by_smell": {
+              "circular_import": 11,
+              "god_module": 16,
+              "layer_boundary_violation": 42,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 2,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 69,
+            "by_smell": {
+              "circular_import": 11,
+              "god_module": 16,
+              "layer_boundary_violation": 42,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "intelligent-audit-system",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 98,
+            "by_smell": {
+              "circular_import": 39,
+              "god_module": 5,
+              "layer_boundary_violation": 54,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 98,
+            "by_smell": {
+              "circular_import": 39,
+              "god_module": 5,
+              "layer_boundary_violation": 54,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 98,
+            "by_smell": {
+              "circular_import": 39,
+              "god_module": 5,
+              "layer_boundary_violation": 54,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 4,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 98,
+            "by_smell": {
+              "circular_import": 39,
+              "god_module": 5,
+              "layer_boundary_violation": 54,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "airflow",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "oracle_results.json missing"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "parse_error": false,
+            "notes": "llm_results.json missing"
+          },
+          "judge": {
             "total_validated": 0,
             "by_smell": {
               "circular_import": 0,
@@ -56,101 +2870,35 @@
         {
           "severity": "low",
           "oracle": {
-            "total_smell_relevant": 12,
+            "total_smell_relevant": 0,
             "by_smell": {
               "circular_import": 0,
-              "god_module": 10,
-              "layer_boundary_violation": 2,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
               "long_method": 0,
               "poor_naming": 0
             },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation"
-            ],
-            "precision": 0.5,
-            "recall": 0.5,
-            "f1": 0.5,
-            "notes": "1 pre-existing smell type(s) counted as FP"
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "oracle_results.json missing"
           },
           "llm": {
-            "total_detected": 8,
-            "by_smell": {
-              "circular_import": 2,
-              "god_module": 1,
-              "layer_boundary_violation": 2,
-              "long_method": 3,
-              "poor_naming": 0
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation"
-            ],
-            "parse_error": false,
-            "precision": 0.5,
-            "recall": 1.0,
-            "f1": 0.6667,
-            "notes": "2 pre-existing smell type(s) counted as FP"
-          },
-          "judge": {
-            "total_validated": 2,
+            "total_detected": 0,
             "by_smell": {
               "circular_import": 0,
-              "god_module": 1,
-              "layer_boundary_violation": 1,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
               "long_method": 0,
               "poor_naming": 0
             },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation"
-            ],
-            "precision": 0.5,
-            "recall": 0.5,
-            "f1": 0.5,
-            "notes": "1 pre-existing smell type(s) counted as FP"
-          }
-        },
-        {
-          "severity": "medium",
-          "oracle": {
-            "total_smell_relevant": 14,
-            "by_smell": {
-              "circular_import": 0,
-              "god_module": 12,
-              "layer_boundary_violation": 2,
-              "long_method": 0,
-              "poor_naming": 0
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module"
-            ],
-            "precision": 1.0,
-            "recall": 0.6667,
-            "f1": 0.8,
-            "notes": ""
-          },
-          "llm": {
-            "total_detected": 6,
-            "by_smell": {
-              "circular_import": 1,
-              "god_module": 1,
-              "layer_boundary_violation": 1,
-              "long_method": 2,
-              "poor_naming": 1
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module"
-            ],
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
             "parse_error": false,
-            "precision": 0.6,
-            "recall": 1.0,
-            "f1": 0.75,
-            "notes": "2 pre-existing smell type(s) counted as FP"
+            "notes": "llm_results.json missing"
           },
           "judge": {
             "total_validated": 0,
@@ -161,11 +2909,56 @@
               "long_method": 0,
               "poor_naming": 0
             },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module"
-            ],
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "judge_results.json missing"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "oracle_results.json missing"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "parse_error": false,
+            "notes": "llm_results.json missing"
+          },
+          "judge": {
+            "total_validated": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
             "precision": null,
             "recall": null,
             "f1": null,
@@ -175,47 +2968,35 @@
         {
           "severity": "high",
           "oracle": {
-            "total_smell_relevant": 16,
+            "total_smell_relevant": 0,
             "by_smell": {
               "circular_import": 0,
-              "god_module": 14,
-              "layer_boundary_violation": 2,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
               "long_method": 0,
               "poor_naming": 0
             },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module",
-              "long_method",
-              "poor_naming"
-            ],
-            "precision": 1.0,
-            "recall": 0.4,
-            "f1": 0.5714,
-            "notes": ""
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "oracle_results.json missing"
           },
           "llm": {
-            "total_detected": 5,
+            "total_detected": 0,
             "by_smell": {
-              "circular_import": 1,
-              "god_module": 1,
-              "layer_boundary_violation": 1,
-              "long_method": 1,
-              "poor_naming": 1
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
             },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module",
-              "long_method",
-              "poor_naming"
-            ],
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
             "parse_error": false,
-            "precision": 1.0,
-            "recall": 1.0,
-            "f1": 1.0,
-            "notes": ""
+            "notes": "llm_results.json missing"
           },
           "judge": {
             "total_validated": 0,
@@ -226,13 +3007,7 @@
               "long_method": 0,
               "poor_naming": 0
             },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module",
-              "long_method",
-              "poor_naming"
-            ],
+            "injected_types": [],
             "precision": null,
             "recall": null,
             "f1": null,
@@ -242,16 +3017,16 @@
       ]
     },
     {
-      "name": "click",
+      "name": "deeptutor",
       "tiers": [
         {
           "severity": "none",
           "oracle": {
-            "total_smell_relevant": 101,
+            "total_smell_relevant": 616,
             "by_smell": {
-              "circular_import": 7,
-              "god_module": 32,
-              "layer_boundary_violation": 62,
+              "circular_import": 173,
+              "god_module": 367,
+              "layer_boundary_violation": 76,
               "long_method": 0,
               "poor_naming": 0
             },
@@ -278,7 +3053,192 @@
             "notes": "baseline tier, no injections"
           },
           "judge": {
-            "total_validated": 0,
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 616,
+            "by_smell": {
+              "circular_import": 173,
+              "god_module": 367,
+              "layer_boundary_violation": 76,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 615,
+            "by_smell": {
+              "circular_import": 172,
+              "god_module": 367,
+              "layer_boundary_violation": 76,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 616,
+            "by_smell": {
+              "circular_import": 173,
+              "god_module": 367,
+              "layer_boundary_violation": 76,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        }
+      ]
+    },
+    {
+      "name": "paperless-ngx",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 667,
+            "by_smell": {
+              "circular_import": 545,
+              "god_module": 121,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
             "by_smell": {
               "circular_import": 0,
               "god_module": 0,
@@ -287,20 +3247,36 @@
               "poor_naming": 0
             },
             "injected_types": [],
+            "parse_error": true,
             "precision": null,
             "recall": null,
             "f1": null,
-            "notes": "judge_results.json missing"
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
           }
         },
         {
           "severity": "low",
           "oracle": {
-            "total_smell_relevant": 103,
+            "total_smell_relevant": 698,
             "by_smell": {
-              "circular_import": 7,
-              "god_module": 32,
-              "layer_boundary_violation": 64,
+              "circular_import": 574,
+              "god_module": 121,
+              "layer_boundary_violation": 3,
               "long_method": 0,
               "poor_naming": 0
             },
@@ -314,26 +3290,7 @@
             "notes": "1 pre-existing smell type(s) counted as FP"
           },
           "llm": {
-            "total_detected": 4,
-            "by_smell": {
-              "circular_import": 1,
-              "god_module": 1,
-              "layer_boundary_violation": 1,
-              "long_method": 1,
-              "poor_naming": 0
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation"
-            ],
-            "parse_error": false,
-            "precision": 0.5,
-            "recall": 1.0,
-            "f1": 0.6667,
-            "notes": "2 pre-existing smell type(s) counted as FP"
-          },
-          "judge": {
-            "total_validated": 0,
+            "total_detected": 0,
             "by_smell": {
               "circular_import": 0,
               "god_module": 0,
@@ -345,20 +3302,39 @@
               "circular_import",
               "layer_boundary_violation"
             ],
+            "parse_error": true,
             "precision": null,
-            "recall": null,
+            "recall": 0.0,
             "f1": null,
-            "notes": "judge_results.json missing"
+            "notes": ""
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation"
+            ],
+            "precision": 0.6667,
+            "recall": 1.0,
+            "f1": 0.8,
+            "notes": "1 pre-existing smell type(s) counted as FP"
           }
         },
         {
           "severity": "medium",
           "oracle": {
-            "total_smell_relevant": 105,
+            "total_smell_relevant": 700,
             "by_smell": {
-              "circular_import": 7,
-              "god_module": 34,
-              "layer_boundary_violation": 64,
+              "circular_import": 574,
+              "god_module": 123,
+              "layer_boundary_violation": 3,
               "long_method": 0,
               "poor_naming": 0
             },
@@ -373,27 +3349,7 @@
             "notes": ""
           },
           "llm": {
-            "total_detected": 5,
-            "by_smell": {
-              "circular_import": 1,
-              "god_module": 1,
-              "layer_boundary_violation": 1,
-              "long_method": 1,
-              "poor_naming": 1
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module"
-            ],
-            "parse_error": false,
-            "precision": 0.6,
-            "recall": 1.0,
-            "f1": 0.75,
-            "notes": "2 pre-existing smell type(s) counted as FP"
-          },
-          "judge": {
-            "total_validated": 0,
+            "total_detected": 0,
             "by_smell": {
               "circular_import": 0,
               "god_module": 0,
@@ -406,20 +3362,280 @@
               "layer_boundary_violation",
               "god_module"
             ],
+            "parse_error": true,
             "precision": null,
-            "recall": null,
+            "recall": 0.0,
             "f1": null,
-            "notes": "judge_results.json missing"
+            "notes": ""
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module"
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "notes": ""
           }
         },
         {
           "severity": "high",
           "oracle": {
-            "total_smell_relevant": 107,
+            "total_smell_relevant": 704,
             "by_smell": {
-              "circular_import": 7,
-              "god_module": 36,
-              "layer_boundary_violation": 64,
+              "circular_import": 576,
+              "god_module": 125,
+              "layer_boundary_violation": 3,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module",
+              "long_method",
+              "poor_naming"
+            ],
+            "precision": 1.0,
+            "recall": 0.6,
+            "f1": 0.75,
+            "notes": ""
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module",
+              "long_method",
+              "poor_naming"
+            ],
+            "parse_error": true,
+            "precision": null,
+            "recall": 0.0,
+            "f1": null,
+            "notes": ""
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module",
+              "long_method",
+              "poor_naming"
+            ],
+            "precision": 1.0,
+            "recall": 0.6,
+            "f1": 0.75,
+            "notes": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "celery",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 153,
+            "by_smell": {
+              "circular_import": 31,
+              "god_module": 115,
+              "layer_boundary_violation": 7,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 155,
+            "by_smell": {
+              "circular_import": 31,
+              "god_module": 115,
+              "layer_boundary_violation": 9,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation"
+            ],
+            "precision": 0.6667,
+            "recall": 1.0,
+            "f1": 0.8,
+            "notes": "1 pre-existing smell type(s) counted as FP"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation"
+            ],
+            "parse_error": true,
+            "precision": null,
+            "recall": 0.0,
+            "f1": null,
+            "notes": ""
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation"
+            ],
+            "precision": 0.6667,
+            "recall": 1.0,
+            "f1": 0.8,
+            "notes": "1 pre-existing smell type(s) counted as FP"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 157,
+            "by_smell": {
+              "circular_import": 31,
+              "god_module": 117,
+              "layer_boundary_violation": 9,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module"
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "notes": ""
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module"
+            ],
+            "parse_error": true,
+            "precision": null,
+            "recall": 0.0,
+            "f1": null,
+            "notes": ""
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module"
+            ],
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "notes": ""
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 159,
+            "by_smell": {
+              "circular_import": 31,
+              "god_module": 119,
+              "layer_boundary_violation": 9,
               "long_method": 0,
               "poor_naming": 0
             },
@@ -440,8 +3656,8 @@
             "by_smell": {
               "circular_import": 1,
               "god_module": 1,
-              "layer_boundary_violation": 1,
-              "long_method": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 2,
               "poor_naming": 1
             },
             "injected_types": [
@@ -453,16 +3669,16 @@
             ],
             "parse_error": false,
             "precision": 1.0,
-            "recall": 1.0,
-            "f1": 1.0,
+            "recall": 0.8,
+            "f1": 0.8889,
             "notes": ""
           },
           "judge": {
-            "total_validated": 0,
+            "total_validated": 3,
             "by_smell": {
-              "circular_import": 0,
-              "god_module": 0,
-              "layer_boundary_violation": 0,
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
               "long_method": 0,
               "poor_naming": 0
             },
@@ -473,55 +3689,24 @@
               "long_method",
               "poor_naming"
             ],
-            "precision": null,
-            "recall": null,
-            "f1": null,
-            "notes": "judge_results.json missing"
+            "precision": 1.0,
+            "recall": 0.6,
+            "f1": 0.75,
+            "notes": ""
           }
         }
       ]
     },
     {
-      "name": "flask-hexagonal",
+      "name": "thumbor",
       "tiers": [
         {
           "severity": "none",
           "oracle": {
-            "total_smell_relevant": 13,
+            "total_smell_relevant": 214,
             "by_smell": {
-              "circular_import": 4,
-              "god_module": 1,
-              "layer_boundary_violation": 7,
-              "long_method": 0,
-              "poor_naming": 1
-            },
-            "injected_types": [],
-            "precision": null,
-            "recall": null,
-            "f1": null,
-            "notes": "baseline tier, no injections"
-          },
-          "llm": {
-            "total_detected": 4,
-            "by_smell": {
-              "circular_import": 0,
-              "god_module": 1,
-              "layer_boundary_violation": 1,
-              "long_method": 1,
-              "poor_naming": 1
-            },
-            "injected_types": [],
-            "parse_error": false,
-            "precision": null,
-            "recall": null,
-            "f1": null,
-            "notes": "baseline tier, no injections"
-          },
-          "judge": {
-            "total_validated": 0,
-            "by_smell": {
-              "circular_import": 0,
-              "god_module": 0,
+              "circular_import": 208,
+              "god_module": 6,
               "layer_boundary_violation": 0,
               "long_method": 0,
               "poor_naming": 0
@@ -530,34 +3715,47 @@
             "precision": null,
             "recall": null,
             "f1": null,
-            "notes": "judge_results.json missing"
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 1,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
           }
         },
         {
           "severity": "low",
           "oracle": {
-            "total_smell_relevant": 17,
+            "total_smell_relevant": 219,
             "by_smell": {
-              "circular_import": 6,
-              "god_module": 1,
-              "layer_boundary_violation": 9,
-              "long_method": 0,
-              "poor_naming": 1
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation"
-            ],
-            "precision": 0.5,
-            "recall": 1.0,
-            "f1": 0.6667,
-            "notes": "2 pre-existing smell type(s) counted as FP"
-          },
-          "llm": {
-            "total_detected": 3,
-            "by_smell": {
-              "circular_import": 1,
-              "god_module": 0,
+              "circular_import": 211,
+              "god_module": 6,
               "layer_boundary_violation": 2,
               "long_method": 0,
               "poor_naming": 0
@@ -566,14 +3764,13 @@
               "circular_import",
               "layer_boundary_violation"
             ],
-            "parse_error": false,
-            "precision": 1.0,
+            "precision": 0.6667,
             "recall": 1.0,
-            "f1": 1.0,
-            "notes": ""
+            "f1": 0.8,
+            "notes": "1 pre-existing smell type(s) counted as FP"
           },
-          "judge": {
-            "total_validated": 0,
+          "llm": {
+            "total_detected": 0,
             "by_smell": {
               "circular_import": 0,
               "god_module": 0,
@@ -585,59 +3782,39 @@
               "circular_import",
               "layer_boundary_violation"
             ],
+            "parse_error": true,
             "precision": null,
-            "recall": null,
+            "recall": 0.0,
             "f1": null,
-            "notes": "judge_results.json missing"
+            "notes": ""
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation"
+            ],
+            "precision": 0.6667,
+            "recall": 1.0,
+            "f1": 0.8,
+            "notes": "1 pre-existing smell type(s) counted as FP"
           }
         },
         {
           "severity": "medium",
           "oracle": {
-            "total_smell_relevant": 19,
+            "total_smell_relevant": 221,
             "by_smell": {
-              "circular_import": 6,
-              "god_module": 3,
-              "layer_boundary_violation": 9,
-              "long_method": 0,
-              "poor_naming": 1
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module"
-            ],
-            "precision": 0.75,
-            "recall": 1.0,
-            "f1": 0.8571,
-            "notes": "1 pre-existing smell type(s) counted as FP"
-          },
-          "llm": {
-            "total_detected": 3,
-            "by_smell": {
-              "circular_import": 0,
-              "god_module": 1,
-              "layer_boundary_violation": 1,
-              "long_method": 0,
-              "poor_naming": 1
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module"
-            ],
-            "parse_error": false,
-            "precision": 0.6667,
-            "recall": 0.6667,
-            "f1": 0.6667,
-            "notes": "1 pre-existing smell type(s) counted as FP"
-          },
-          "judge": {
-            "total_validated": 0,
-            "by_smell": {
-              "circular_import": 0,
-              "god_module": 0,
-              "layer_boundary_violation": 0,
+              "circular_import": 211,
+              "god_module": 8,
+              "layer_boundary_violation": 2,
               "long_method": 0,
               "poor_naming": 0
             },
@@ -646,33 +3823,9 @@
               "layer_boundary_violation",
               "god_module"
             ],
-            "precision": null,
-            "recall": null,
-            "f1": null,
-            "notes": "judge_results.json missing"
-          }
-        },
-        {
-          "severity": "high",
-          "oracle": {
-            "total_smell_relevant": 21,
-            "by_smell": {
-              "circular_import": 6,
-              "god_module": 5,
-              "layer_boundary_violation": 9,
-              "long_method": 0,
-              "poor_naming": 1
-            },
-            "injected_types": [
-              "circular_import",
-              "layer_boundary_violation",
-              "god_module",
-              "long_method",
-              "poor_naming"
-            ],
             "precision": 1.0,
-            "recall": 0.8,
-            "f1": 0.8889,
+            "recall": 1.0,
+            "f1": 1.0,
             "notes": ""
           },
           "llm": {
@@ -687,18 +3840,59 @@
             "injected_types": [
               "circular_import",
               "layer_boundary_violation",
-              "god_module",
-              "long_method",
-              "poor_naming"
+              "god_module"
             ],
             "parse_error": false,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.75,
+            "notes": "2 pre-existing smell type(s) counted as FP"
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module"
+            ],
             "precision": 1.0,
             "recall": 1.0,
             "f1": 1.0,
             "notes": ""
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 222,
+            "by_smell": {
+              "circular_import": 211,
+              "god_module": 9,
+              "layer_boundary_violation": 2,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module",
+              "long_method",
+              "poor_naming"
+            ],
+            "precision": 1.0,
+            "recall": 0.6,
+            "f1": 0.75,
+            "notes": ""
           },
-          "judge": {
-            "total_validated": 0,
+          "llm": {
+            "total_detected": 0,
             "by_smell": {
               "circular_import": 0,
               "god_module": 0,
@@ -713,10 +3907,233 @@
               "long_method",
               "poor_naming"
             ],
+            "parse_error": true,
+            "precision": null,
+            "recall": 0.0,
+            "f1": null,
+            "notes": ""
+          },
+          "judge": {
+            "total_validated": 3,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [
+              "circular_import",
+              "layer_boundary_violation",
+              "god_module",
+              "long_method",
+              "poor_naming"
+            ],
+            "precision": 1.0,
+            "recall": 0.6,
+            "f1": 0.75,
+            "notes": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "XiaohongshuSkills",
+      "tiers": [
+        {
+          "severity": "none",
+          "oracle": {
+            "total_smell_relevant": 22,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 22,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
             "precision": null,
             "recall": null,
             "f1": null,
-            "notes": "judge_results.json missing"
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 1,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "low",
+          "oracle": {
+            "total_smell_relevant": 22,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 22,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 1,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "medium",
+          "oracle": {
+            "total_smell_relevant": 22,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 22,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 0,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 0,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "parse_error": true,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 1,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          }
+        },
+        {
+          "severity": "high",
+          "oracle": {
+            "total_smell_relevant": 22,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 22,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "llm": {
+            "total_detected": 5,
+            "by_smell": {
+              "circular_import": 1,
+              "god_module": 1,
+              "layer_boundary_violation": 1,
+              "long_method": 1,
+              "poor_naming": 1
+            },
+            "injected_types": [],
+            "parse_error": false,
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
+          },
+          "judge": {
+            "total_validated": 1,
+            "by_smell": {
+              "circular_import": 0,
+              "god_module": 1,
+              "layer_boundary_violation": 0,
+              "long_method": 0,
+              "poor_naming": 0
+            },
+            "injected_types": [],
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "notes": "baseline tier, no injections"
           }
         }
       ]
@@ -725,24 +4142,24 @@
   "rq_summary": {
     "RQ1": {
       "description": "LLM vs oracle on coarse-grained smells (circular_import, god_module, layer_boundary_violation)",
-      "oracle_coarse_recall": 77.4,
-      "llm_coarse_recall": 96.3,
-      "gap": -18.9,
-      "judge_coarse_recall": 50.0,
-      "judge_coarse_precision": 50.0
+      "oracle_coarse_recall": 86.7,
+      "llm_coarse_recall": 20.0,
+      "gap": 66.7,
+      "judge_coarse_recall": 86.7,
+      "judge_coarse_precision": 88.9
     },
     "RQ2": {
       "description": "LLM fine-grained vs coarse-grained detection",
-      "llm_coarse_recall": 96.3,
-      "llm_fine_recall": 100.0
+      "llm_coarse_recall": 18.5,
+      "llm_fine_recall": 33.3
     },
     "RQ3": {
       "description": "LLM recall by severity tier",
       "by_tier": {
         "none": null,
-        "low": 100.0,
-        "medium": 88.9,
-        "high": 100.0
+        "low": 0.0,
+        "medium": 33.3,
+        "high": 26.7
       }
     }
   }
