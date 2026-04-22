@@ -15,7 +15,7 @@ REPO_CONFIGS = {
             "god_module":               ["pretrain.py"],
             "long_method":              ["models/layers.py"],
             "poor_naming":              ["models/layers.py"],
-            "layer_boundary_violation": ["utils/functions.py"],
+            "layer_boundary_violation": ["utils/functions.py", "evaluate.py"],
         },
     },
     "computer-use-preview": {
@@ -30,7 +30,7 @@ REPO_CONFIGS = {
             "god_module":               ["agent.py"],
             "long_method":              ["computers/playwright/playwright.py"],
             "poor_naming":              ["computers/playwright/playwright.py"],
-            "layer_boundary_violation": ["computers/computer.py"],
+            "layer_boundary_violation": ["computers/computer.py", "agent.py"],
         },
     },
     "simple_GRPO": {
@@ -45,7 +45,7 @@ REPO_CONFIGS = {
             "god_module":               ["Auto_Program/hjy_grpo_program.py"],
             "long_method":              ["grpo_vllm_one.py"],
             "poor_naming":              ["simple_grpo_v1/grpo_ref_split.py"],
-            "layer_boundary_violation": ["ref_server.py"],
+            "layer_boundary_violation": ["ref_server.py", "grpo_vllm_one.py"],
         },
     },
     "wechat-decrypt": {
@@ -60,7 +60,7 @@ REPO_CONFIGS = {
             "god_module":               ["monitor_web.py"],
             "long_method":              ["mcp_server.py"],
             "poor_naming":              ["mcp_server.py"],
-            "layer_boundary_violation": ["key_utils.py"],
+            "layer_boundary_violation": ["key_utils.py", "main.py"],
         },
     },
     "android-action-kernel": {
@@ -75,7 +75,7 @@ REPO_CONFIGS = {
             "god_module":               ["llm_providers.py"],
             "long_method":              ["llm_providers.py"],
             "poor_naming":              ["llm_providers.py"],
-            "layer_boundary_violation": ["constants.py"],
+            "layer_boundary_violation": ["constants.py", "kernel.py"],
         },
     },
     "make-it-heavy": {
@@ -90,7 +90,7 @@ REPO_CONFIGS = {
             "god_module":               ["orchestrator.py"],
             "long_method":              ["make_it_heavy.py"],
             "poor_naming":              ["make_it_heavy.py"],
-            "layer_boundary_violation": ["main.py"],
+            "layer_boundary_violation": ["main.py", "orchestrator.py"],
         },
     },
     "StockTradebyZ": {
@@ -105,7 +105,7 @@ REPO_CONFIGS = {
             "god_module":               ["pipeline/Selector.py"],
             "long_method":              ["pipeline/Selector.py"],
             "poor_naming":              ["pipeline/Selector.py"],
-            "layer_boundary_violation": ["pipeline/io.py"],
+            "layer_boundary_violation": ["pipeline/io.py", "pipeline/pipeline_core.py"],
         },
     },
     "notebooklm-skill": {
@@ -120,7 +120,7 @@ REPO_CONFIGS = {
             "god_module":               ["notebook_manager.py"],
             "long_method":              ["notebook_manager.py"],
             "poor_naming":              ["notebook_manager.py"],
-            "layer_boundary_violation": ["config.py"],
+            "layer_boundary_violation": ["config.py", "notebook_manager.py"],
         },
     },
     "smart-turn": {
@@ -135,7 +135,7 @@ REPO_CONFIGS = {
             "god_module":               ["train.py"],
             "long_method":              ["benchmark.py"],
             "poor_naming":              ["record_and_predict.py"],
-            "layer_boundary_violation": ["audio_utils.py"],
+            "layer_boundary_violation": ["audio_utils.py", "inference.py"],
         },
     },
     "csm": {
@@ -150,7 +150,7 @@ REPO_CONFIGS = {
             "god_module":               ["models.py"],
             "long_method":              ["models.py"],
             "poor_naming":              ["generator.py"],
-            "layer_boundary_violation": ["generator.py"],
+            "layer_boundary_violation": ["generator.py", "run_csm.py"],
         },
     },
     "GRPO-Zero": {
@@ -165,7 +165,7 @@ REPO_CONFIGS = {
             "god_module":               ["qwen2_model.py"],
             "long_method":              ["qwen2_model.py"],
             "poor_naming":              ["qwen2_model.py"],
-            "layer_boundary_violation": ["data_types.py"],
+            "layer_boundary_violation": ["data_types.py", "train.py"],
         },
     },
     "SNI-Spoofing": {
@@ -180,7 +180,7 @@ REPO_CONFIGS = {
             "god_module":               ["main.py"],
             "long_method":              ["fake_tcp.py"],
             "poor_naming":              ["fake_tcp.py"],
-            "layer_boundary_violation": ["utils/packet_templates.py"],
+            "layer_boundary_violation": ["utils/packet_templates.py", "main.py"],
         },
     },
     "qiaomu-anything-to-notebooklm": {
@@ -195,7 +195,7 @@ REPO_CONFIGS = {
             "god_module":               ["feishu-read-mcp/src/scraper.py"],
             "long_method":              ["feishu-read-mcp/src/scraper.py"],
             "poor_naming":              ["feishu-read-mcp/src/scraper.py"],
-            "layer_boundary_violation": ["feishu-read-mcp/src/server.py"],
+            "layer_boundary_violation": ["feishu-read-mcp/src/server.py", "main.py"],
         },
     },
     "intelligent-audit-system": {
@@ -210,7 +210,7 @@ REPO_CONFIGS = {
             "god_module":               ["training/training_pipeline.py"],
             "long_method":              ["training/training_pipeline.py"],
             "poor_naming":              ["training/training_pipeline.py"],
-            "layer_boundary_violation": ["config.py"],
+            "layer_boundary_violation": ["config.py", "start.py"],
         },
     },
     "XiaohongshuSkills": {
@@ -225,7 +225,7 @@ REPO_CONFIGS = {
             "god_module":               ["cdp_publish.py"],
             "long_method":              ["cdp_publish.py"],
             "poor_naming":              ["cdp_publish.py"],
-            "layer_boundary_violation": ["feed_explorer.py"],
+            "layer_boundary_violation": ["feed_explorer.py", "publish_pipeline.py"],
         },
     },
 }

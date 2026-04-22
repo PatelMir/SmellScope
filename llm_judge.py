@@ -7,6 +7,7 @@ smell-relevant finding as genuine or false positive, and writes judge_results.js
 
 import json
 import sys
+import time
 from pathlib import Path
 
 _PROMPT_TEMPLATE = """\
@@ -57,11 +58,42 @@ def _parse_verdict(raw_text: str) -> tuple:
         return None, "", True
 
 
+def _api_call_with_backoff(client, model: str, prompt_text: str) -> str | None:
+    """
+    Make one Gemini API call with exponential backoff on transient errors.
+
+    On 429 or 503: backs off 10s, 20s, 40s and retries up to 3 times.
+    On other errors: logs and returns None immediately.
+    Returns raw response text, or None on failure.
+    """
+    for attempt in range(4):  # 1 initial + 3 retries
+        try:
+            response = client.models.generate_content(model=model, contents=prompt_text)
+            return response.text
+        except Exception as exc:
+            exc_str = str(exc)
+            is_transient = "429" in exc_str or "503" in exc_str
+            if is_transient and attempt < 3:
+                wait = 10 * (2 ** attempt)  # 10s, 20s, 40s
+                label = "429" if "429" in exc_str else "503"
+                print(
+                    f"[judge] {label} on attempt {attempt + 1} — backing off {wait}s and retrying.",
+                    file=sys.stderr,
+                )
+                time.sleep(wait)
+                continue
+            print(f"[judge] API error on attempt {attempt + 1}: {exc}", file=sys.stderr)
+            return None
+    print("[judge] Max API retries exceeded.", file=sys.stderr)
+    return None
+
+
 def _call_gemini_judge(prompt: str, model: str, api_key: str) -> tuple:
     """
     Send one prompt to Gemini and return (verdict, reason, parse_error).
 
-    Retries once on parse failure, then defaults to genuine to avoid silent drops.
+    API errors (429/503/network): exponential backoff starting at 10s, up to 3 retries.
+    Parse errors: retry once with a clarified prompt, then default to genuine.
     """
     try:
         from google import genai
@@ -71,20 +103,27 @@ def _call_gemini_judge(prompt: str, model: str, api_key: str) -> tuple:
 
     client = genai.Client(api_key=api_key)
 
-    for attempt in range(2):
-        try:
-            response = client.models.generate_content(model=model, contents=prompt)
-            raw_text = response.text
-        except Exception as exc:
-            print(f"[judge] API call failed (attempt {attempt + 1}): {exc}", file=sys.stderr)
-            continue
+    raw_text = _api_call_with_backoff(client, model, prompt)
+    if raw_text is None:
+        print("[judge] Defaulting to genuine after API failure.", file=sys.stderr)
+        return "genuine", "api_error", True
 
+    verdict, reason, error = _parse_verdict(raw_text)
+    if not error:
+        return verdict, reason, False
+
+    # Parse error: retry once with a clarified prompt
+    print("[judge] Parse error on first response — retrying with clarified prompt.", file=sys.stderr)
+    clarified = (
+        prompt
+        + '\n\nIMPORTANT: Your entire response must be valid JSON with no extra text:\n'
+        + '{"verdict": "genuine" | "false_positive", "reason": "<one sentence>"}'
+    )
+    raw_text = _api_call_with_backoff(client, model, clarified)
+    if raw_text is not None:
         verdict, reason, error = _parse_verdict(raw_text)
         if not error:
             return verdict, reason, False
-
-        if attempt == 0:
-            print("[judge] Parse error on first attempt, retrying...", file=sys.stderr)
 
     print("[judge] Defaulting to genuine after parse failure.", file=sys.stderr)
     return "genuine", "parse_error", True

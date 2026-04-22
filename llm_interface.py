@@ -85,7 +85,7 @@ def _format_summary_block(summary: dict) -> str:
     return "\n".join(lines)
 
 
-def build_codebase_summary(snapshot_path: Path, max_chars: int = 12000) -> tuple:
+def build_codebase_summary(snapshot_path: Path, max_chars: int = 36000) -> tuple:
     """
     Build a codebase summary string for all .py files in snapshot_path.
 
@@ -172,7 +172,8 @@ def call_gemini(prompt: str, api_key: str, model: str = _MODEL_NAME) -> tuple:
     """
     Send one prompt to Gemini and return (parsed_result, raw_text).
 
-    No retries -- each call costs one RPD slot and the daily limit is tight.
+    On 429, backs off 30 seconds and retries once. All other failures
+    are logged and returned as parse_error without crashing the pipeline.
     """
     try:
         from google import genai
@@ -182,11 +183,25 @@ def call_gemini(prompt: str, api_key: str, model: str = _MODEL_NAME) -> tuple:
 
     client = genai.Client(api_key=api_key)
 
-    try:
-        response = client.models.generate_content(model=model, contents=prompt)
-        raw_text = response.text
-    except Exception as exc:
-        print(f"[llm] API call failed: {exc}", file=sys.stderr)
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(model=model, contents=prompt)
+            raw_text = response.text
+            break
+        except Exception as exc:
+            exc_str = str(exc)
+            if "429" in exc_str and attempt < 2:
+                print("[llm] 429 rate limit — backing off 30s and retrying.", file=sys.stderr)
+                time.sleep(30)
+                continue
+            if "503" in exc_str and attempt < 2:
+                wait = 60 * (attempt + 1)
+                print(f"[llm] 503 unavailable — backing off {wait}s and retrying.", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            print(f"[llm] API call failed: {exc}", file=sys.stderr)
+            return {"detected_smells": [], "parse_error": True, "raw_response": ""}, ""
+    else:
         return {"detected_smells": [], "parse_error": True, "raw_response": ""}, ""
 
     parsed, error = _parse_llm_response(raw_text)
@@ -217,7 +232,7 @@ def run_llm(snapshot_path: Path, repo_name: str, severity: str, api_key: str, mo
     summary, files_dropped = build_codebase_summary(snapshot_path)
     prompt = _build_prompt(summary)
 
-    time.sleep(5)
+    time.sleep(4)
 
     parsed, _ = call_gemini(prompt, api_key, model)
     parse_error = parsed.get("parse_error", False)

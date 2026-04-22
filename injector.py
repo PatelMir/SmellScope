@@ -134,7 +134,7 @@ def _inject_layer_violation(
     dest_path: Path, repo_config: dict, injections: list, warnings: list
 ) -> None:
     """Inject layer_boundary_violation: lower module imports stub from upper module."""
-    targets = repo_config.get("injection_targets", {}).get("layer_violation")
+    targets = repo_config.get("injection_targets", {}).get("layer_boundary_violation")
     if not targets or len(targets) != 2:
         warnings.append({"warning": "layer_violation: no valid injection_targets defined."})
         return
@@ -196,7 +196,7 @@ def _inject_god_module(
     if not target:
         warnings.append({"warning": "god_module: no injection_target defined."})
         return
-    if isinstance(target, tuple):
+    if isinstance(target, (list, tuple)):
         target = target[0]
 
     path = dest_path / target
@@ -254,7 +254,7 @@ def _inject_long_method(
     if not target:
         warnings.append({"warning": "long_method: no injection_target defined."})
         return
-    if isinstance(target, tuple):
+    if isinstance(target, (list, tuple)):
         target = target[0]
 
     path = dest_path / target
@@ -298,7 +298,7 @@ def _inject_poor_naming(
     if not target:
         warnings.append({"warning": "poor_naming: no injection_target defined."})
         return
-    if isinstance(target, tuple):
+    if isinstance(target, (list, tuple)):
         target = target[0]
 
     path = dest_path / target
