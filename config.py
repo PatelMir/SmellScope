@@ -243,7 +243,7 @@ SMELL_TYPES = [
 PYLINT_SMELL_MAP = {
     "R0914": "god_module",               # too-many-locals
     "R0912": "god_module",               # too-many-branches
-    "R0915": "god_module",               # too-many-statements
+    "R0915": "long_method",              # too-many-statements
     "R0902": "god_module",               # too-many-instance-attributes
     "E0401": "circular_import",          # import-error (post-injection only)
     "R0401": "circular_import",          # cyclic-import

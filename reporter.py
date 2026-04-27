@@ -409,4 +409,29 @@ def generate_report(snapshots_dir: Path, output_dir: Path, repo_names: list) -> 
             file=sys.stderr,
         )
 
+    # Also compute and save the comprehensive per-mode metrics
+    try:
+        import full_metrics as _fm
+        snapshots = [
+            _fm._load_snapshot(repo, tier)
+            for repo in repo_names
+            for tier in SEVERITY_TIERS
+        ]
+        full = {
+            "repos": repo_names,
+            "tiers": SEVERITY_TIERS,
+            "smell_types": SMELL_TYPES,
+            "overall": {m: _fm.compute_overall(snapshots, m) for m in _fm.MODES},
+            "by_smell": {m: _fm.compute_by_smell(snapshots, m) for m in _fm.MODES},
+            "by_tier": {m: _fm.compute_by_tier(snapshots, m) for m in _fm.MODES},
+            "per_repo_coarse": {m: _fm.compute_per_repo_coarse(snapshots, m) for m in _fm.MODES},
+        }
+        results_dir = snapshots_dir.parent / "results"
+        results_dir.mkdir(exist_ok=True)
+        fm_path = results_dir / "full_metrics.json"
+        fm_path.write_text(json.dumps(full, indent=2), encoding="utf-8")
+        print(f"[reporter] Full metrics -> {fm_path}")
+    except Exception as exc:
+        print(f"[reporter] WARNING: could not compute full_metrics: {exc}", file=sys.stderr)
+
     return report
