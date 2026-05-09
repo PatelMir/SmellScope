@@ -428,9 +428,7 @@ def generate_report(snapshots_dir: Path, output_dir: Path, repo_names: list) -> 
             "by_tier": {m: _fm.compute_by_tier(snapshots, m) for m in _fm.MODES},
             "per_repo_coarse": {m: _fm.compute_per_repo_coarse(snapshots, m) for m in _fm.MODES},
         }
-        results_dir = snapshots_dir.parent / "results"
-        results_dir.mkdir(exist_ok=True)
-        fm_path = results_dir / "full_metrics.json"
+        fm_path = output_dir / "full_metrics.json"
         fm_path.write_text(json.dumps(full, indent=2), encoding="utf-8")
         print(f"[reporter] Full metrics -> {fm_path}")
     except Exception as exc:
