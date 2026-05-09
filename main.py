@@ -33,7 +33,7 @@ REPOS_DIR = BASE / "repos"
 SNAPSHOTS_DIR = BASE / "snapshots"
 OUTPUT_DIR = BASE / "output"
 
-_DEFAULT_MODEL = "gemini-2.5-flash-lite"
+_DEFAULT_MODEL = "gemini-3.1-flash-lite-preview"
 
 
 def _parse_args() -> argparse.Namespace:

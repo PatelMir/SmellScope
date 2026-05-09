@@ -11,7 +11,7 @@ import sys
 import time
 from pathlib import Path
 
-_MODEL_NAME = "gemini-2.5-flash-lite"
+_MODEL_NAME = "gemini-3.1-flash-lite-preview"
 
 
 def _count_locals(func_node: ast.FunctionDef) -> int:
