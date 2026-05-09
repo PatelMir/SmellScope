@@ -32,7 +32,7 @@ except ImportError:
     )
     sys.exit(1)
 
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import PYLINT_SMELL_MAP
 
 _COMMIT_CUTOFF = date(2025, 2, 1)

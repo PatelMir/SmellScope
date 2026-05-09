@@ -10,11 +10,11 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import REPO_CONFIGS, SEVERITY_TIERS, SMELL_TYPES
 
-SNAPSHOTS_DIR = Path(__file__).parent / "snapshots"
-RESULTS_DIR = Path(__file__).parent / "output"
+SNAPSHOTS_DIR = Path(__file__).parent.parent / "snapshots"
+RESULTS_DIR = Path(__file__).parent.parent / "output"
 
 COARSE_SMELLS = frozenset({"circular_import", "god_module", "layer_boundary_violation"})
 FINE_SMELLS = frozenset({"long_method", "poor_naming"})
@@ -22,8 +22,7 @@ ALL_REPOS = list(REPO_CONFIGS.keys())
 MODES = ("oracle", "llm", "judge")
 
 
-# --- data loading ---
-
+# Data loading
 def _load_json(path: Path) -> dict | None:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -72,8 +71,7 @@ def _load_snapshot(repo: str, tier: str) -> dict:
     }
 
 
-# --- metrics computation ---
-
+# Metrics computation
 def _metrics(tp: int, fp: int, fn: int) -> dict:
     precision = tp / (tp + fp) if (tp + fp) > 0 else None
     recall = tp / (tp + fn) if (tp + fn) > 0 else None
@@ -159,8 +157,7 @@ def compute_per_repo_coarse(snapshots: list, mode: str) -> dict:
     return results
 
 
-# --- table printing ---
-
+# Table printing
 def _pf(val: float | None, pct: bool = True) -> str:
     if val is None:
         return "  N/A  "
@@ -230,8 +227,7 @@ def print_tables(full: dict) -> None:
     print()
 
 
-# --- main ---
-
+# Main
 def main() -> None:
     print(f"[metrics] Loading snapshots for {len(ALL_REPOS)} repos x {len(SEVERITY_TIERS)} tiers...", file=sys.stderr)
 
